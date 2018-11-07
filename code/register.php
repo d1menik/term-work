@@ -1,3 +1,8 @@
+<?php
+include("config.php");
+include("includes/register-handler.php");
+?>
+
 <html>
 <head>
     <title>Playbox | Login page</title>
@@ -20,12 +25,6 @@
     <h3>Create your free account</h3>
     <p>
         <input type="text" id="username" name="username" placeholder="Username" class="inputForm" required>
-    </p>
-    <p>
-        <input type="text" id="firstName" name="firstName" placeholder="First name" class="inputForm" required>
-    </p>
-    <p>
-        <input type="text" id="lastName" name="lastName" placeholder="Last name" class="inputForm" required>
     </p>
     <p>
     <input type="email" id="email" name="email" placeholder="Email" class="inputForm" required>
