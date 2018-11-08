@@ -1,6 +1,15 @@
 <?php
 if (isset($_POST['registerBtn'])) {
-   registerUser();
+    $un = $_POST['username'];
+    $em = $_POST['email'];
+    $pw = $_POST['passwd'];
+    $pw2 = $_POST['passwd2'];
+
+    $wasSuccessful = $account->validateUser($un, $em, $pw, $pw2);
+
+    if($wasSuccessful) {
+        registerUser();
+    }
 }
 
 function registerUser () {
@@ -16,4 +25,5 @@ function registerUser () {
     $stmt->bindParam(':passwd', $password);
 
     $stmt->execute();
+    echo "You were successfully registered";
 }
