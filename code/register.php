@@ -3,10 +3,12 @@ include("config.php");
 
 include("includes/classes/Account.php");
 include ("includes/classes/Constants.php");
+include ("includes/classes/Connection.php");
 
-$account = new Account();
+$account = new Account(Connection::getPdoInstance());
 
 include("includes/register-handler.php");
+include("includes/login-handler.php");
 ?>
 
 <html>
@@ -19,6 +21,7 @@ include("includes/register-handler.php");
 <form id="loginForm" action="register.php" method="POST">
     <h3>Login to your account</h3>
     <p>
+        <?php echo $account->getError(Constants::$loginFailed); ?>
         <input type="text" id="loginUsername" name="loginUsername" placeholder="Username" class="inputForm" required>
     </p>
     <p>

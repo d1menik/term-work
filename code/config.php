@@ -1,4 +1,7 @@
 <?php
+ob_start();
+session_start();
+
 define('DB_HOST', 'db');
 define('DB_USER', 'root');
 define('DB_PASSWORD', 'docker');

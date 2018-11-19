@@ -8,22 +8,25 @@ if (isset($_POST['registerBtn'])) {
     $wasSuccessful = $account->validateUser($un, $em, $pw, $pw2);
 
     if($wasSuccessful) {
-        registerUser();
+        registerUser(Connection::getPdoInstance());
+        $_SESSION['userLoggedIn'] = $un;
+        header("Location: index.php");
     }
 }
 
-function registerUser () {
-    $conn = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+function registerUser ($conn) {
+    try {
+        $stmt = $conn->prepare("INSERT INTO users (username, email, password, created) VALUES (:username, :email, :passwd, CURRENT_TIMESTAMP)");
 
-    $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :passwd)");
+        $stmt->bindParam(':username', $_POST["username"]);
+        $stmt->bindParam(':email', $_POST["email"]);
 
-    $stmt->bindParam(':username', $_POST["username"]);
-    $stmt->bindParam(':email', $_POST["email"]);
+        $password = password_hash($_POST["passwd"], PASSWORD_BCRYPT);
+        $stmt->bindParam(':passwd', $password);
 
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $stmt->bindParam(':passwd', $password);
-
-    $stmt->execute();
-    echo "You were successfully registered";
+        $stmt->execute();
+    }
+    catch (PDOException $e) {
+        echo "Something went wrong, please try again." . $e;
+    }
 }
