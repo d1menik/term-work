@@ -1,0 +1,246 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', 'Arial', 'sans-serif';
+    font-size: 22px;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    color: #d7d7d7;
+    height: 100%;
+}
+
+h1, h2 {
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+h1 {
+    margin: 45px 0 20px;
+    font-size: 240%;
+    word-spacing: 4px;
+}
+
+h2 {
+    margin: 0 0 70px;
+    font-size: 130%;
+    word-spacing: 2px;
+    font-style: italic;
+}
+
+h3 {
+    font-size: 110%;
+    margin-bottom: 15px;
+    font-weight: 400;
+    text-align: center;
+}
+
+#background {
+    background: linear-gradient(rgba(0, 0, 0, 0.80), rgba(0, 0, 0, 0.80)), url("../vendors/images/hero.jpg") center;
+    background-size: cover;
+    display: table;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#loginContainer {
+    width: 30%;
+    max-width: 1140px;
+    margin: 0 auto 70px;
+    display: flex;
+}
+
+#inputContainer {
+    width: 100%;
+    padding: 0 30px;
+    float: left;
+    border: 1px solid #999;
+    border-radius: 20px;
+    overflow: auto;
+}
+
+*:focus {
+    outline: none
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #d2d2d2;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #d2d2d2;
+    opacity: 1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #d2d2d2;
+    opacity: 1;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #d2d2d2;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #d2d2d2;
+}
+
+::-webkit-input-placeholder {
+    color: #d2d2d2;
+    font-style: italic;
+}
+
+:focus::-webkit-input-placeholder {
+    text-indent: -999px
+}
+
+::-moz-placeholder {
+    color: #d2d2d2;
+    font-style: italic;
+}
+
+:focus::-moz-placeholder {
+    text-indent: -999px
+}
+
+.inputForm {
+    background-color: transparent;
+    display: block;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    height: 30px;
+    width: 100%;
+    color: #e3e3e3;
+}
+
+.btn {
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    display: block;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #d2d2d2;
+    margin: 20px auto;
+    height: 41px;
+    width: 100%;
+    transition: background-color 0.3s, border 0.3s, color 0.3s;
+}
+
+.btn:hover, .btn:active {
+    background-color: #d6d6d6;
+    color: #373737;
+    cursor: pointer;
+}
+
+.hasAccountText {
+    font-size: 60%;
+    text-align: center;
+    cursor: pointer;
+}
+
+p input {
+    display: none;
+}
+
+#registerForm, #loginForm {
+    display: none;
+}
+
+input {
+    font-size: 75%;
+}
+
+/*---------------------*/
+/*Footer*/
+/*---------------------*/
+
+footer {
+    margin-top: -70px;
+    background-color: #313131;
+    padding: 10px;
+    font-size: 65%;
+    display: flex;
+    height: auto;
+}
+
+.footer-nav {
+    list-style: none;
+    float: left;
+    display: inline-block;
+}
+
+.icons {
+    margin: 0 30px 0 auto;
+}
+
+.social-links {
+    list-style: none;
+    float: right;
+}
+
+.footer-nav li,
+.social-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer-nav li:last-child,
+.social-links li:last-child {
+    margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited {
+    text-decoration: none;
+    border: 0;
+    color: #999999;
+    transition: color 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+    color: #e1e1e1;
+}
+
+.social-links li a:visited,
+.social-links li a:link {
+    font-size: 140%;
+}
+
+.ion-social-facebook,
+.ion-social-instagram,
+.ion-social-youtube,
+.ion-social-twitter {
+    transition: color 0.3s;
+}
+
+.ion-social-facebook:hover,
+.ion-social-facebook:active {
+    color: #3b5998;
+}
+
+.ion-social-twitter:hover,
+.ion-social-twitter:active {
+    color: #00aced;
+}
+
+.ion-social-youtube:hover,
+.ion-social-youtube:active {
+    color: #bb0000;
+}
+
+.ion-social-instagram:hover,
+.ion-social-instagram:active {
+    color: #517fa4;
+}
+
+.errorMessage {
+    color: darkred;
+    display: block;
+    text-align: center;
+    font-size: 90%;
+}
