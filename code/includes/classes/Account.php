@@ -20,14 +20,14 @@ class Account
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user === false) {
-            array_push($this->errorArray, Constants::$loginFailed);
+            array_push($this->errorArray, Constants::LOGIN_FAILED);
             return false;
         } else {
             $validPassword = password_verify($pw, $user['password']);
             if ($validPassword) {
                 return true;
             } else {
-                array_push($this->errorArray, Constants::$loginFailed);
+                array_push($this->errorArray, Constants::LOGIN_FAILED);
                 return false;
             }
         }
@@ -57,7 +57,7 @@ class Account
     private function validateUsername($un)
     {
         if (strlen($un) > 25 || strlen($un) < 5) {
-            array_push($this->errorArray, Constants::$usernameCharacters);
+            array_push($this->errorArray, Constants::USERNAME_CHARACTERS);
             return;
         }
 
@@ -66,7 +66,7 @@ class Account
         $row = $stmt->rowCount();
 
         if ($row !== 0) {
-            array_push($this->errorArray, Constants::$usernameTaken);
+            array_push($this->errorArray, Constants::USERNAME_TAKEN);
             return;
         }
     }
@@ -74,7 +74,7 @@ class Account
     private function validateEmail($em)
     {
         if (!filter_var($em, FILTER_VALIDATE_EMAIL)) {
-            array_push($this->errorArray, Constants::$emailInvalid);
+            array_push($this->errorArray, Constants::EMAIL_INVALID);
             return;
         }
 
@@ -83,7 +83,7 @@ class Account
         $row = $stmt->rowCount();
 
         if ($row !== 0) {
-            array_push($this->errorArray, Constants::$emailTaken);
+            array_push($this->errorArray, Constants::EMAIL_TAKEN);
             return;
         }
     }
@@ -91,11 +91,11 @@ class Account
     private function validatePasswds($pw, $pw2)
     {
         if ($pw !== $pw2) {
-            array_push($this->errorArray, Constants::$passwordsDoNotMatch);
+            array_push($this->errorArray, Constants::PASSWORDS_DO_NOT_MATCH);
             return;
         }
         if (strlen($pw) > 30 || strlen($pw) < 5) {
-            array_push($this->errorArray, Constants::$passwordCharacters);
+            array_push($this->errorArray, Constants::PASSWORD_CHARACTERS);
             return;
         }
     }
