@@ -1,8 +1,7 @@
 <?php
 include("config.php");
 include("includes/classes/Connection.php");
-include("includes/classes/RandomAlbums.php");
-
+include("includes/classes/Random.php");
 
 if (isset($_SESSION['userLoggedIn'])) {
     $userLoggedIn = $_SESSION['userLoggedIn'];
@@ -16,6 +15,9 @@ if (isset($_SESSION['userLoggedIn'])) {
 <head>
     <title>Welcome to Playbox</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/Audio.js"></script>
 </head>
 <body>
 <div id="mainContainer">
@@ -52,11 +54,11 @@ if (isset($_SESSION['userLoggedIn'])) {
                 <div class="gridContainer">
 
                     <?php
-                    $album = new RandomAlbums(Connection::getPdoInstance());
+                    $random = new Random(Connection::getPdoInstance());
 
-                    $randSongs = $album->getSomeSongs();
+                    $randAlbums = $random->getSomeAlbums();
 
-                    foreach ($randSongs as $row) {
+                    foreach ($randAlbums as $row) {
                         $logoPath = $row['logoPath'];
                         $title = $row['title'];
                         $id = $row['album_id'];
@@ -74,6 +76,30 @@ if (isset($_SESSION['userLoggedIn'])) {
         </div>
     </div>
     <div id="playingBarContainer">
+        <?php
+        $randSongs = $random->getSomeSongs();
+        $resultArr = array();
+
+        foreach ($randSongs as $row) {
+            array_push($resultArr, $row);
+        }
+
+        $jsonArr = json_encode($resultArr);
+
+        ?>
+
+        <script>
+            $(document).ready(function () {
+                let newPlaylist = <?php echo $jsonArr ?>;
+                audioElement = new Audio();
+
+                console.log(newPlaylist[0].path);
+                audioElement.setSrc(newPlaylist[0]);
+                audioElement.play();
+                audioElement.pause();
+            })
+        </script>
+
         <div id="playingBar">
             <div id="playingLeft">
                 <div class="content">
