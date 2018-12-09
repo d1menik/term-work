@@ -1,4 +1,6 @@
 <?php
+include ("includes/classes/Connection.php");
+
 ob_start();
 session_start();
 
@@ -8,4 +10,6 @@ define('DB_PASSWORD', 'docker');
 define('DB_NAME', 'db_dev');
 define('BASE_URL', parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
 define('CURRENT_URL', $_SERVER['SCRIPT_NAME'] . '?' . $_SERVER['QUERY_STRING']);
+
+$conn = Connection::getPdoInstance();
 

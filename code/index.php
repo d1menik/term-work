@@ -1,7 +1,5 @@
 <?php
 include("config.php");
-include("includes/classes/Connection.php");
-include("includes/classes/Random.php");
 
 if (isset($_SESSION['userLoggedIn'])) {
     $userLoggedIn = $_SESSION['userLoggedIn'];
@@ -54,9 +52,9 @@ if (isset($_SESSION['userLoggedIn'])) {
                 <div class="gridContainer">
 
                     <?php
-                    $random = new Random(Connection::getPdoInstance());
-
-                    $randAlbums = $random->getSomeAlbums();
+                        $stmt = $conn->prepare("SELECT * FROM albums ORDER BY RAND() LIMIT 10");
+                        $stmt->execute();
+                        $randAlbums = $stmt->fetchAll();
 
                     foreach ($randAlbums as $row) {
                         $logoPath = $row['logoPath'];
@@ -77,7 +75,11 @@ if (isset($_SESSION['userLoggedIn'])) {
     </div>
     <div id="playingBarContainer">
         <?php
-        $randSongs = $random->getSomeSongs();
+
+        $stmt = $conn->prepare("SELECT * FROM songs ORDER BY RAND() LIMIT 10");
+        $stmt->execute();
+        $randSongs = $stmt->fetchAll();
+
         $resultArr = array();
 
         foreach ($randSongs as $row) {
@@ -93,11 +95,25 @@ if (isset($_SESSION['userLoggedIn'])) {
                 let newPlaylist = <?php echo $jsonArr ?>;
                 audioElement = new Audio();
 
-                console.log(newPlaylist[0].path);
                 audioElement.setSrc(newPlaylist[0]);
+
+            });
+
+            function playSong() {
+                if(audioElement.audio.currentTime === 0) {
+                    $.post('includes/ajax/increasePlays.php', {song_id: audioElement.currentlyPlaying.song_id});
+                }
+
+                $(".controlButton.play").hide();
+                $(".controlButton.pause").show();
                 audioElement.play();
+            }
+
+            function pauseSong() {
                 audioElement.pause();
-            })
+                $(".controlButton.play").show();
+                $(".controlButton.pause").hide();
+            }
         </script>
 
         <div id="playingBar">
@@ -118,10 +134,10 @@ if (isset($_SESSION['userLoggedIn'])) {
                         <button class="controlButton previous" title="Previous button">
                             <img src="assets/vendors/icons/previous.png" alt="Previous">
                         </button>
-                        <button class="controlButton play" title="Play button">
+                        <button class="controlButton play" title="Play button" onclick="playSong();">
                             <img src="assets/vendors/icons/play.png" alt="Play">
                         </button>
-                        <button class="controlButton pause" title="Pause button" style="display: none">
+                        <button class="controlButton pause" title="Pause button" style="display: none" onclick="pauseSong();">
                             <img src="assets/vendors/icons/pause.png" alt="Pause">
                         </button>
                         <button class="controlButton next" title="Next button">
