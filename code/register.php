@@ -3,7 +3,6 @@ include("config.php");
 
 include("includes/classes/Account.php");
 include("includes/classes/Constants.php");
-include("includes/classes/Connection.php");
 
 $account = new Account(Connection::getPdoInstance());
 

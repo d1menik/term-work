@@ -1,4 +1,6 @@
 let audioElement;
+let currentPlaylist = [];
+let currentIndex = 0;
 
 class Audio {
     constructor() {
@@ -17,5 +19,9 @@ class Audio {
 
     pause() {
         this.audio.pause();
+    }
+
+    setTime(seconds) {
+        this.audio.currentTime = seconds;
     }
 }
