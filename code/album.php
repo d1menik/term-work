@@ -1,9 +1,5 @@
 <?php
-include("config.php");
-include("includes/classes/Artist.php");
-include("includes/classes/Album.php");
-include("includes/classes/Song.php");
-
+include("header.php");
 
 if (isset($_GET['id'])) {
     $albumId = ($_GET['id']);
@@ -44,9 +40,8 @@ $artist = $album->getArtist();
                             <span class='trackNumber'>$i</span>
                          </div>
 
-                         <div class='trackInfo'>
-                            <span class='trackName'>" . $albumSong->getTitle() . "</span>
-                            <span class='artistName'>" . $albumArtist->getName() . "</span>
+                         <div class='trackTitle'>
+                            <span>" . $albumSong->getTitle() . "</span>
                           </div>
 
                           <div class='trackOption'>
@@ -66,3 +61,4 @@ $artist = $album->getArtist();
     </div>
 
 <?
+include('footer.php');
