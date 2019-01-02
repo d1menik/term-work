@@ -20,6 +20,12 @@ textarea:focus {
     letter-spacing: 1px;
 }
 
+h2 {
+    margin: 0;
+    font-weight: 300;
+    font-size: 20px;
+}
+
 #playingBarContainer {
     background-color: #BC986A;
     width: 100%;
@@ -279,13 +285,13 @@ textarea:focus {
     padding: 15px 10px;
     list-style: none;
     transition: 0.3s;
-
 }
+
 .trackListRow span {
     font-weight: 200;
 }
 
-.trackListRow:hover, .trackListRow:active  {
+.trackListRow:hover, .trackListRow:active {
     background-color: rgba(255, 255, 255, 0.39);
     transition: 0.3s;
 }
@@ -294,6 +300,7 @@ textarea:focus {
     width: 8%;
     float: left;
 }
+
 .trackListRow .trackCount img {
     padding-top: 6px;
     width: 30px;
@@ -319,11 +326,13 @@ textarea:focus {
     display: block;
     margin-bottom: 5px;
 }
+
 .trackOption {
     width: 5%;
     float: left;
     text-align: right;
 }
+
 .trackOption img {
     width: 30px;
     visibility: hidden;
@@ -339,6 +348,58 @@ textarea:focus {
     text-align: right;
 }
 
+/* ----------------------- */
+/* Search page */
+/* ----------------------- */
 
+.search {
+    padding: 20px 0;
+}
 
+.search h4 {
+    margin: 0;
+    font-weight: 300;
+    font-size: 25px;
+}
 
+.search input {
+    width: 94%;
+    background-color: white;
+    border: none;
+    font-weight: 300;
+    font-size: 35px;
+    letter-spacing: 2px;
+    color: #659DBD;
+    padding: 10px;
+    display: block;
+    margin: 20px auto 0;
+}
+
+.search input:focus {
+    outline: none;
+}
+
+.search ::placeholder {
+    color: #659DBD;
+}
+
+.noResults {
+    margin: 15px;
+    display: block;
+}
+
+.borderBottom:last-of-type {
+    border-bottom: 1px solid white;
+    padding-bottom: 20px;
+}
+
+.trackContainer ul {
+    padding: 0;
+}
+
+.gridContainer h2 {
+    padding-bottom: 15px;
+}
+.gridContainer .gridItem {
+    margin-left: 15px;
+}

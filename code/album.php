@@ -32,7 +32,6 @@ $artist = $album->getArtist();
             foreach ($songsIdArray as $song_id) {
 
                 $albumSong = new Song($conn, $song_id);
-                $albumArtist = $albumSong->getArtist();
 
                 echo "<li class='trackListRow'>
                          <div class='trackCount'>

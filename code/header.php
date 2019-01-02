@@ -30,7 +30,7 @@ if (isset($_SESSION['userLoggedIn'])) {
                 </a>
                 <div class="group">
                     <div class="navItem searchContainer">
-                        <a href="#" class="navItemLink">Search
+                        <a href="search.php" class="navItemLink">Search
                             <img src="assets/vendors/icons/search.png" class="searchIcon" alt="Search">
                         </a>
                     </div>
