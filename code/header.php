@@ -3,9 +3,12 @@ include("config.php");
 include("includes/classes/Artist.php");
 include("includes/classes/Album.php");
 include("includes/classes/Song.php");
+include("includes/classes/User.php");
+include("includes/classes/Playlist.php");
 
 if (isset($_SESSION['userLoggedIn'])) {
-    $userLoggedIn = $_SESSION['userLoggedIn'];
+    $userLoggedIn = new User($conn, $_SESSION['userLoggedIn']);
+    $userId = $userLoggedIn->getUserId();
 } else {
     header("Location: register.php");
 }
@@ -19,6 +22,7 @@ if (isset($_SESSION['userLoggedIn'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/Audio.js"></script>
+    <script> userId = '<?php echo $userId ;?>';</script>
 </head>
 <body>
 <div id="mainContainer">
@@ -40,7 +44,7 @@ if (isset($_SESSION['userLoggedIn'])) {
                         <a href="#" class="navItemLink">Browse</a>
                     </div>
                     <div class="navItem">
-                        <a href="#" class="navItemLink">Your Music</a>
+                        <a href="yourPlaylists.php" class="navItemLink">Your Music</a>
                     </div>
                     <div class="navItem">
                         <a href="#" class="navItemLink">Settings</a>

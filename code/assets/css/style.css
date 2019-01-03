@@ -403,3 +403,36 @@ h2 {
 .gridContainer .gridItem {
     margin-left: 15px;
 }
+
+/* ----------------------- */
+/* Your Playlists */
+/* ----------------------- */
+
+.buttonItems .button {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.gridViewContainer h2 {
+    text-align: center;
+    padding: 20px 0 20px;
+    font-size: 25px;
+}
+
+.gridViewContainer .gridItem {
+    padding: 15px;
+}
+
+.button {
+    color: #659DBD;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 15px;
+    border: 2px solid;
+    border-radius: 500px;
+    padding: 13px 15px;
+    min-width: 100px;
+    transition: 0.3s;
+    background-color: white;
+}
