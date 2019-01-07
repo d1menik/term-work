@@ -9,6 +9,7 @@ include("includes/classes/Playlist.php");
 if (isset($_SESSION['userLoggedIn'])) {
     $userLoggedIn = new User($conn, $_SESSION['userLoggedIn']);
     $userId = $userLoggedIn->getUserId();
+    $username = $userLoggedIn->getUsername();
 } else {
     header("Location: register.php");
 }
@@ -23,6 +24,7 @@ if (isset($_SESSION['userLoggedIn'])) {
     <script src="assets/js/script.js"></script>
     <script src="assets/js/Audio.js"></script>
     <script> userId = '<?php echo $userId ;?>';</script>
+    <script> userLoggedIn = '<?php echo $username ;?>';</script>
 </head>
 <body>
 <div id="mainContainer">
@@ -47,7 +49,7 @@ if (isset($_SESSION['userLoggedIn'])) {
                         <a href="yourPlaylists.php" class="navItemLink">Your Music</a>
                     </div>
                     <div class="navItem">
-                        <a href="#" class="navItemLink">Settings</a>
+                        <a href="settings.php" class="navItemLink">Settings</a>
                     </div>
                 </div>
             </nav>
