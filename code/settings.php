@@ -1,6 +1,5 @@
 <?php
-include("header.php");
-
+include("includes/includes.php");
 ?>
 
 <div class="entityInfo">
@@ -10,11 +9,10 @@ include("header.php");
         </div>
     </div>
     <div class="buttonItems">
-        <button class="button" onclick='window.open("userDetails.php", "_self")'>User details</button>
+        <button class="button" onclick='openPage("userDetails.php")'>User details</button>
         <button class="button" onclick="logout();">Logout</button>
     </div>
 
 </div>
 
 <?
-include("footer.php");

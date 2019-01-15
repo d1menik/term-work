@@ -1,4 +1,4 @@
-<? include('header.php') ?>
+<?include("includes/includes.php"); ?>
 <h1>Discover For You</h1>
 
 <div class="gridContainer">
@@ -14,13 +14,11 @@
         $id = $row['album_id'];
 
         echo "<div class ='gridItem'>
-                              <a href='album.php?id=$id'>
+                              <span onclick=openPage('album.php?id=$id')>
                               <img src=$logoPath alt='logo'>
                               <div class='gridInfo'>$title</div>
-                              </a>
+                              </span>
                               </div>";
     }
     ?>
 </div>
-
-<? include('footer.php') ?>

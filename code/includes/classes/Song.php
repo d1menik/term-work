@@ -28,6 +28,7 @@ class Song
         $this->duration = $song['duration'];
         $this->path = $song['path'];
         $this->plays = $song['plays'];
+        $this->id = $song['song_id'];
 
     }
     public function getTitle() {
@@ -47,6 +48,9 @@ class Song
     }
     public function plays() {
         return $this->plays;
+    }
+    public function getId() {
+        return $this->id;
     }
 
 }

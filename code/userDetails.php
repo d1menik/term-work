@@ -1,5 +1,5 @@
 <?php
-include("header.php");
+include("includes/includes.php");
 ?>
 
 <div class="userDetails">
@@ -21,4 +21,3 @@ include("header.php");
 </div>
 
 <?
-include("footer.php");

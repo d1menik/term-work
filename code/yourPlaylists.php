@@ -1,5 +1,5 @@
 <?php
-include("header.php");
+include("includes/includes.php");
 
 ?>
 
@@ -12,6 +12,7 @@ include("header.php");
             </div>
 
             <?php
+            $userId = $userLoggedIn->getUserId();
 
             $stmt = $conn->prepare("SELECT * FROM playlists WHERE user_id=:userId");
             $stmt->bindParam('userId', $userId);
@@ -24,7 +25,7 @@ include("header.php");
             } else {
 
                 foreach ($playlists as $play) {
-                    echo "<div class ='gridItem' role='link' tabindex='0' onclick='window.open(\"playlist.php?id=" . $play['playlist_id'] . "\", \"_self\");'> 
+                    echo "<div class ='gridItem' role='link' tabindex='0' onclick='openPage(\"playlist.php?id=" . $play['playlist_id'] ."\");'> 
                 <div class='playlistImage'>
                     <img src='assets/vendors/icons/playlist.png' alt=''>
                 </div>    
@@ -40,4 +41,3 @@ include("header.php");
     </div>
 
 <?
-include("footer.php");

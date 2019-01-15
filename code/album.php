@@ -1,5 +1,5 @@
 <?php
-include("header.php");
+include("includes/includes.php");
 
 if (isset($_GET['id'])) {
     $albumId = ($_GET['id']);
@@ -25,6 +25,15 @@ $artist = $album->getArtist();
     <div class="trackContainer">
         <ul class="trackList">
             <?php
+            $userId = $userLoggedIn->getUserId();
+
+            $stmt = $conn->prepare("SELECT * FROM playlists WHERE user_id=:userId");
+            $stmt->bindParam('userId', $userId);
+            $stmt->execute();
+
+            $playlists = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
             $songsIdArray = $album->getSongIds();
 
             $i = 1;
@@ -35,7 +44,7 @@ $artist = $album->getArtist();
 
                 echo "<li class='trackListRow'>
                          <div class='trackCount'>
-                            <img src='assets/vendors/icons/play-white.png' alt='Play button' class='play'>
+                            <img src='assets/vendors/icons/play-white.png' alt='Play button' class='play' onclick='setTrack(\"" . $albumSong->getId() . "\", tempPlaylist, true)'>
                             <span class='trackNumber'>$i</span>
                          </div>
 
@@ -45,7 +54,14 @@ $artist = $album->getArtist();
 
                           <div class='trackOption'>
                             <img src='assets/vendors/icons/more.png' alt='More Button' class='optionBtn'>
-                          </div>
+                             <div class='dropdown-content'> ";
+                                foreach ($playlists as $play) {
+                                    $name = $play['name'];
+                                    echo "<span role='link'>$name</span>";
+                                }
+                            echo "
+                            </div>
+                            </div>
 
                           <div class='trackDuration'>
                             <span class='duration'>" . $albumSong->getDuration() . " </span>
@@ -56,8 +72,12 @@ $artist = $album->getArtist();
             }
             ?>
 
+            <script>
+                tempSongIds = '<?php echo json_encode($songsIdArray); ?>';
+                tempPlaylist = JSON.parse(tempSongIds);
+            </script>
+
         </ul>
     </div>
 
 <?
-include('footer.php');

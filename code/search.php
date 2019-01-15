@@ -1,5 +1,5 @@
 <?php
-include("header.php");
+include("includes/includes.php");
 
 if (isset($_GET['term'])) {
     $term = urldecode($_GET['term']);
@@ -25,7 +25,7 @@ if (isset($_GET['term'])) {
 
                 timer = setTimeout(function () {
                     let val = $(".searchInput").val();
-                    window.open(`search.php?term=${val}`, "_self");
+                    openPage(`search.php?term=${val}`, "_self");
                 }, 1500)
             })
         })
@@ -33,7 +33,6 @@ if (isset($_GET['term'])) {
 
 <?
 if ($term == "") {
-    include("footer.php");
     exit();
 }
 
@@ -59,7 +58,7 @@ if ($term == "") {
 
                     echo "<li class='trackListRow borderBottom'>
                          <div class='trackCount'>
-                            <img src='assets/vendors/icons/play-white.png' alt='Play button' class='play'>
+                            <img src='assets/vendors/icons/play-white.png' alt='Play button' class='play' onclick='setTrack(\"" . $albumSong->getId() . "\", false, true)'>
                             <span class='trackNumber'>$i</span>
                          </div>
 
@@ -109,4 +108,3 @@ if ($term == "") {
 
     </div>
 <?
-include("footer.php");

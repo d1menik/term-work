@@ -1,5 +1,14 @@
 let userId;
 
+function openPage(url) {
+    if (url.indexOf("?") === -1) {
+        url = url + "?";
+    }
+    let encodedUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
+    $("#mainContent").load(encodedUrl);
+    history.pushState(null, null, url);
+}
+
 function createPlaylist() {
     let popup = prompt("Please enter the name of your new playlist.");
 
@@ -58,8 +67,8 @@ function updatePasswd(odlPasswordClass, newPasswordClass1, newPasswordClass2) {
         newPassword2: newPasswordValue2,
         username: userLoggedIn
     }).done(function (err) {
-            if (err !== "") {
-                alert(err);
-            }
-        })
+        if (err !== "") {
+            alert(err);
+        }
+    })
 }

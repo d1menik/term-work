@@ -18,7 +18,7 @@ class Playlist
 
         $playlist = $stmt->fetch();
 
-        $this->id = $playlist['id'];
+        $this->id = $playlist['playlist_id'];
         $this->name = $playlist['name'];
         $this->owner = $playlist['user_id'];
     }
@@ -40,7 +40,7 @@ class Playlist
 
     public function getNumberOfSongs()
     {
-        $stmt = $this->conn->prepare("SELECT song_id FROM playlistSong WHERE playlist_id=:id");
+        $stmt = $this->conn->prepare("SELECT song_id FROM playlistsSongs WHERE playlist_id=:id");
         $stmt->bindParam('id', $this->id);
         $stmt->execute();
 
@@ -50,7 +50,7 @@ class Playlist
 
     public function getSongIds()
     {
-        $stmt = $this->conn->prepare("SELECT song_id FROM playlistSong WHERE playlist_id=:id ORDER BY playlistOrder ASC");
+        $stmt = $this->conn->prepare("SELECT song_id FROM playlistsSongs WHERE playlist_id=:id ORDER BY playlistOrder ASC");
         $stmt->bindParam('id', $this->id);
         $stmt->execute();
 
