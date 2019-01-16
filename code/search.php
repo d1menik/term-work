@@ -42,6 +42,13 @@ if ($term == "") {
         <h2>Songs</h2>
         <ul class="trackList">
             <?php
+            $userId = $userLoggedIn->getUserId();
+
+            $stmt = $conn->prepare("SELECT * FROM playlists WHERE user_id=:userId");
+            $stmt->bindParam('userId', $userId);
+            $stmt->execute();
+
+            $playlists = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             $stmt = $conn->prepare("SELECT song_id FROM songs WHERE title LIKE '$term%' LIMIT 10");
             $stmt->execute();
@@ -56,6 +63,8 @@ if ($term == "") {
                 foreach ($songIds as $song) {
                     $albumSong = new Song($conn, $song["song_id"]);
 
+                    $songId = $albumSong->getId();
+
                     echo "<li class='trackListRow borderBottom'>
                          <div class='trackCount'>
                             <img src='assets/vendors/icons/play-white.png' alt='Play button' class='play' onclick='setTrack(\"" . $albumSong->getId() . "\", false, true)'>
@@ -68,6 +77,14 @@ if ($term == "") {
 
                           <div class='trackOption'>
                             <img src='assets/vendors/icons/more.png' alt='More Button' class='optionBtn'>
+                            <div class='dropdown-content'> ";
+                                foreach ($playlists as $play) {
+                                    $name = $play['name'];
+                                    $playlistId = $play['playlist_id'];
+                                    echo "<span class='addToPlaylist' onclick='toPlaylist($playlistId, $songId)'>$name</span>";
+                                }
+                            echo "
+                            </div>
                           </div>
 
                           <div class='trackDuration'>

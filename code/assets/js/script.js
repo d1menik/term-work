@@ -72,3 +72,24 @@ function updatePasswd(odlPasswordClass, newPasswordClass1, newPasswordClass2) {
         }
     })
 }
+
+function toPlaylist(playlistId, songId) {
+    $.post("includes/ajax/deleteFromPlaylist.php", {
+        playlistId,
+        songId,
+    }).done(function (msg) {
+        if (msg !== "") {
+            alert(msg);
+        } else {
+            $.post("includes/ajax/addToPlaylist.php", {
+                playlistId,
+                songId,
+            }).done(function (msg) {
+                if (msg !== "") {
+                    alert(msg);
+                }
+            })
+        }
+
+    })
+}

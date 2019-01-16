@@ -28,14 +28,5 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
 }
 
 function validateEmail($email, $username, $conn) {
-    $stmt = $conn->prepare("SELECT email FROM users WHERE email=:email AND username !=:username");
-    $stmt->bindParam('username', $username);
-    $stmt->bindParam('email', $email);
-    $stmt->execute();
 
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    if($result) {
-        echo "Email is already in use!";
-        exit();
-    }
 }

@@ -44,6 +44,8 @@ $playlist = new Playlist($conn, $playlistId);
 
                 $playlistSong = new Song($conn, $song_id);
 
+                $songId = $playlistSong->getId();
+
                 echo "<li class='trackListRow'>
                          <div class='trackCount'>
                             <img src='assets/vendors/icons/play-white.png' alt='Play button' class='play' onclick='setTrack(\"" . $playlistSong->getId() . "\", tempPlaylist, true)'>
@@ -59,7 +61,8 @@ $playlist = new Playlist($conn, $playlistId);
                              <div class='dropdown-content'> ";
                                 foreach ($playlists as $play) {
                                     $name = $play['name'];
-                                    echo "<span role='link'>$name</span>";
+                                    $playlistId = $play['playlist_id'];
+                                    echo "<span class='addToPlaylist' onclick='toPlaylist($playlistId, $songId)'>$name</span>";
                                 }
                             echo "
                             </div>
