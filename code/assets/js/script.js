@@ -93,3 +93,13 @@ function toPlaylist(playlistId, songId) {
 
     })
 }
+
+function addPremium(username) {
+    $.post("includes/ajax/becomePremium.php", {
+        username,
+    }).done(function (msg) {
+        if (msg !== "") {
+            alert(msg);
+        }
+    })
+}

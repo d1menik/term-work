@@ -45,6 +45,13 @@ if (isset($_SESSION['userLoggedIn'])) {
                     <div class="navItem">
                         <span role="link" onclick="openPage('yourPlaylists.php')" class="navItemLink">Your Music</span>
                     </div>
+                    <?php
+                    if ($_SESSION['isAdmin']){
+                        echo "<div class=\"navItem\">
+                                   <span onclick=\"openPage('dashboard.php')\" class=\"navItemLink\">Dashboard</span>
+                              </div>";
+                    }
+                    ?>
                     <div class="navItem">
                         <span onclick="openPage('settings.php')" class="navItemLink">Settings</span>
                     </div>

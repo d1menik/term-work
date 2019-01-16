@@ -67,7 +67,7 @@ if ($term == "") {
 
                     echo "<li class='trackListRow borderBottom'>
                          <div class='trackCount'>
-                            <img src='assets/vendors/icons/play-white.png' alt='Play button' class='play' onclick='setTrack(\"" . $albumSong->getId() . "\", false, true)'>
+                            <img src='assets/vendors/icons/play-white.png' alt='Play button' class='play' onclick='setTrack(\"" . $albumSong->getId() . "\", [1], true)'>
                             <span class='trackNumber'>$i</span>
                          </div>
 

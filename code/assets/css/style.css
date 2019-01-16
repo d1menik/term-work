@@ -7,13 +7,7 @@ html, body {
     min-width: 780px;
     font-weight: 100;
 }
-
-a:focus,
-button:focus,
-input:focus,
-textarea:focus {
-    outline: none;
-}
+*:focus {outline:none}
 
 * {
     font-family: 'Open Sans', sans-serif;
@@ -219,6 +213,7 @@ h2 {
 #mainContent h1 {
     padding: 30px;
     text-align: center;
+    font-weight: lighter;
 }
 
 .gridItem {
@@ -442,6 +437,13 @@ h2 {
 /* User details */
 /* ----------------------- */
 
+.userInfo h2 {
+    text-align: center;
+    padding: 20px;
+    font-size: 25px;
+}
+
+
 .borderBottomLine {
     border-bottom: 1px solid white;
     padding-bottom: 20px;
@@ -484,6 +486,35 @@ h2 {
     font-weight: 500;
     font-size: 16px;
 }
+.premium {
+    min-height: 50px;
+    width: 50%;
+    display: block;
+    padding: 0 20px;
+    font-weight: 500;
+    margin: 30px auto;
+    text-align: center;
+    border-radius: 10px;
+    background-color: white;
+    color: #ff5e7c;
+    transition: 0.4s;
+}
+.premium:hover, .premium:active {
+    background-color: #ff5e7c;
+    color: black;
+}
+
+.premium div {
+    padding: 10px ;
+}
+.premium span {
+    display: block;
+    font-weight: 400;
+}
+
+.premium span:first-child {
+   font-size: 22px;
+}
 
 /* ----------------------- */
 /* Option button */
@@ -523,3 +554,18 @@ h2 {
 .dropdown-content span:hover {background-color: #659DBD; color: white}
 
 .trackOption:hover .dropdown-content {display: block;}
+
+/* ----------------------- */
+/* DASHBOARD */
+/* ----------------------- */
+
+.topContainer h2 {
+    text-align: center;
+    padding: 20px;
+    font-size: 25px;
+}
+
+.mainOverview span {
+    padding: 10px;
+    display: block;
+}

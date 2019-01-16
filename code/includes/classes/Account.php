@@ -32,6 +32,18 @@ class Account
             }
         }
     }
+    public function isAdmin ($un) {
+        $stmt = $this->conn->prepare("SELECT isAdmin FROM users WHERE username=:username");
+        $stmt->bindParam('username', $un);
+        $stmt->execute();
+
+        $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($admin['isAdmin'] == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function getError($error)
     {

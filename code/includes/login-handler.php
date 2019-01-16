@@ -5,7 +5,11 @@ if (isset($_POST['loginBtn'])) {
 
     $result = $account->login($username, $passwd);
     if($result) {
+        if($account->isAdmin($username)) {
+            $_SESSION['isAdmin'] = true;
+        }
         $_SESSION['userLoggedIn'] = $username;
+
         header("Location: index.php");
     }
 }
