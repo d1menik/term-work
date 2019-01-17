@@ -41,4 +41,24 @@ class User
         $user = $stmt->fetch();
         return $user['email'];
     }
+
+    public function returnExpireDate()
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE username=:username");
+        $stmt->bindParam('username', $this->username);
+        $stmt->execute();
+
+        $user = $stmt->fetch();
+        return $user['premiumExpire'];
+    }
+
+    public function isPremium()
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE username=:username");
+        $stmt->bindParam('username', $this->username);
+        $stmt->execute();
+
+        $user = $stmt->fetch();
+        return $user['isPremium'];
+    }
 }

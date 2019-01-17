@@ -7,7 +7,10 @@ html, body {
     min-width: 780px;
     font-weight: 100;
 }
-*:focus {outline:none}
+
+*:focus {
+    outline: none
+}
 
 * {
     font-family: 'Open Sans', sans-serif;
@@ -443,7 +446,6 @@ h2 {
     font-size: 25px;
 }
 
-
 .borderBottomLine {
     border-bottom: 1px solid white;
     padding-bottom: 20px;
@@ -486,7 +488,8 @@ h2 {
     font-weight: 500;
     font-size: 16px;
 }
-.premium {
+
+.premium, .isPremium {
     min-height: 50px;
     width: 50%;
     display: block;
@@ -499,21 +502,27 @@ h2 {
     color: #ff5e7c;
     transition: 0.4s;
 }
+
 .premium:hover, .premium:active {
     background-color: #ff5e7c;
     color: black;
 }
 
 .premium div {
-    padding: 10px ;
+    padding: 10px;
 }
+
 .premium span {
     display: block;
     font-weight: 400;
 }
 
 .premium span:first-child {
-   font-size: 22px;
+    font-size: 22px;
+}
+
+.isPremium div {
+    padding: 10px;
 }
 
 /* ----------------------- */
@@ -535,7 +544,7 @@ h2 {
     position: absolute;
     background-color: #f1f1f1;
     min-width: 130px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -545,27 +554,117 @@ h2 {
     padding: 10px 25px 10px 25px;
     text-decoration: none;
     text-align: left;
-    display:block;
+    display: block;
 
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
 
-.dropdown-content span:hover {background-color: #659DBD; color: white}
+.dropdown-content span:hover {
+    background-color: #659DBD;
+    color: white
+}
 
-.trackOption:hover .dropdown-content {display: block;}
+.trackOption:hover .dropdown-content {
+    display: block;
+}
 
 /* ----------------------- */
 /* DASHBOARD */
 /* ----------------------- */
 
-.topContainer h2 {
+.topOverview h2 {
     text-align: center;
-    padding: 20px;
-    font-size: 25px;
+    padding: 30px;
+    font-size: 30px;
 }
 
 .mainOverview span {
     padding: 10px;
     display: block;
+    color: #232323;
+}
+
+.topOverview {
+    border-bottom: 1px solid white;
+}
+
+.leftOverview {
+    min-height: 50px;
+    width: 40%;
+    display: block;
+    padding: 0 20px;
+    font-weight: 500;
+    margin: 30px auto;
+    text-align: left;
+    border-radius: 10px;
+    background-color: white;
+    color: #659DBD;
+    float: left;
+}
+
+.users {
+    min-height: 50px;
+    width: 50%;
+    display: block;
+    padding: 10px 20px;
+    font-weight: 500;
+    margin: 30px auto;
+    border-radius: 10px;
+    background-color: white;
+    color: #659DBD;
+    float: right;
+}
+
+.users table th, .users table td {
+    padding: 5px;
+}
+
+.users h2, .searchByEmail h2 {
+    text-align: center;
+    border-bottom: #659DBD solid 1px;
+    padding: 3px 5px 5px 5px;
+    font-size: 18px;
+}
+
+.searchByEmail h2 {
+    margin-top: 45px;
+}
+
+.emailInput {
+    width: 100%;
+    background-color: white;
+    border: none;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #659DBD;
+    padding: 10px;
+    display: inline-block;
+    float: left;
+    border-radius: 10px;
+    margin: 20px auto 0;
+}
+
+.emailTable {
+    min-height: 50px;
+    width: 40%;
+    display: block;
+    padding: 10px 20px;
+    font-weight: 500;
+    margin: 30px auto;
+    border-radius: 10px;
+    background-color: white;
+    color: #659DBD;
+    float: left;
+}
+
+.emailTable table tr {
+    font-size: 15px;
+}
+
+.searchEmail h2 {
+
 }
