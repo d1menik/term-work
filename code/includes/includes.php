@@ -7,6 +7,8 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
     include("classes/Song.php");
     include("classes/User.php");
     include("classes/Playlist.php");
+    include ("classes/DataTable.php");
+    include ("classes/UserRepository.php");
 
     if (isset($_GET['userLoggedIn'])) {
         $userLoggedIn = new User($conn, $_GET['userLoggedIn']);

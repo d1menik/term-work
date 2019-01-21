@@ -13,13 +13,22 @@ $username = $userLoggedIn->getUsername();
             <button class="button" onclick='openPage("userDetails.php")'>User details</button>
             <button class="button" onclick="logout();">Logout</button>
         </div>
+        <?php if($userLoggedIn->isPremium()) {
+            $expireDate = $userLoggedIn->returnExpireDate();
+            echo "<div class='isPremium'>
+                        <div>
+                            <span>Your premium account expire $expireDate</span>
+                        </div>
+                  </div>
+                    ";
+        } else echo '
         <div class="premium" onclick="addPremium(username);">
             <div>
                 <span>Become Premium User</span>
                 <span>Just for 2.99 EUR per month</span>
             </div>
-        </div>
-
+        </div> '
+        ?>
     </div>
 
 <?
