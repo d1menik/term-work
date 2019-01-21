@@ -40,7 +40,7 @@ class Playlist
 
     public function getNumberOfSongs()
     {
-        $stmt = $this->conn->prepare("SELECT song_id FROM listSongs WHERE playlist_id=:id");
+        $stmt = $this->conn->prepare("SELECT song_id FROM listSong WHERE playlist_id=:id");
         $stmt->bindParam('id', $this->id);
         $stmt->execute();
 
@@ -50,7 +50,7 @@ class Playlist
 
     public function getSongIds()
     {
-        $stmt = $this->conn->prepare("SELECT song_id FROM listSongs WHERE playlist_id=:id ORDER BY playlistOrder ASC");
+        $stmt = $this->conn->prepare("SELECT song_id FROM listSong WHERE playlist_id=:id ORDER BY playlistOrder ASC");
         $stmt->bindParam('id', $this->id);
         $stmt->execute();
 

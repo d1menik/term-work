@@ -6,7 +6,7 @@ if (isset($_POST['playlistId']) && isset($_POST['songId'])) {
     $song_id = $_POST['songId'];
 
 
-    $stmt = $conn->prepare("DELETE from listSongs WHERE song_id=:song_id AND playlist_id=:playlist_id");
+    $stmt = $conn->prepare("DELETE from listSong WHERE song_id=:song_id AND playlist_id=:playlist_id");
     $stmt->bindParam(':song_id', $song_id, PDO::PARAM_STR);
     $stmt->bindParam(':playlist_id', $playlist_id, PDO::PARAM_STR);
 
